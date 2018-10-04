@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Todo;
 
-class PagesController extends Controller
+class TodoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,9 @@ class PagesController extends Controller
      */
     public function index()
     {
-        return view('pages');
+        $todos = Todo::all();
+
+        return view('show',compact('todos'));
     }
 
     /**

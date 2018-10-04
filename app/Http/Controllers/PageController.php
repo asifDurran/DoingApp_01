@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class TodosController extends Controller
+class PageController extends Controller
 {
     /**
      * Display a listing of the resource.
