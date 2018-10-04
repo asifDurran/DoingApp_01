@@ -67,15 +67,8 @@
     <body>
         <div class="flex-center position-ref full-height">
          
-
-            <div class="content">
-                <div class="title m-b-md">
-               DoingApp
-               @foreach($todos as $todo)
-                 <h6>{{$todo->todo}}</h6>
-               @endforeach
-                
-                </div>
+              <h4> <a href="/todos">Visit my todos</a></h4>
+               
             </div>
         </div>
     </body>
