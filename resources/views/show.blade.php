@@ -7,7 +7,16 @@
        <div class="col-lg-6">
        
        @foreach($todos as $todo)
-       <h4>{{$todo->todo}}</h4>
+       <h4>{{$todo->todo}}
+       
+       <a class="btn btn-info btn-xs" href="{{route('todos.update',['id'=>$todo->id])}}" >Update </a>
+       <form action="{{route('todos.destroy',['id'=>$todo->id])}}" method="post">
+       {{csrf_field()}}
+       <input type="hidden" name="_method" value="DELETE">
+       <button type="submit" class="btn btn-danger">Delete</button>
+
+       </form>
+         </h4>
        
        @endforeach
        </div><!--end first columm-->
@@ -27,4 +36,11 @@
        </form><!--end form here-->
 
      </div><!--row end here-->
+
+
+     
+
+     
+     
+     </div>
 @endsection

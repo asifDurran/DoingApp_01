@@ -38,7 +38,7 @@ class TodoController extends Controller
     public function store(Request $request)
     {
       
-       $todo = new Todo;
+       $todo =  new Todo;
 
        $todo->todo =$request->todo;
        $todo->completed =$request->completed;
@@ -67,7 +67,9 @@ class TodoController extends Controller
      */
     public function edit($id)
     {
-        //
+    
+
+
     }
 
     /**
@@ -79,7 +81,9 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $todo = Todo::find($id);
+
+        return view('update')->with('todo',$todo);
     }
 
     /**
@@ -90,6 +94,8 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Todo::destroy($id);
+        
+        return redirect()->back();
     }
 }
