@@ -15,7 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-route::resource('/todos','TodoController');
+Route::resource('/todos','TodoController');
 
 route::resource('pages','PageController');
 Auth::routes();

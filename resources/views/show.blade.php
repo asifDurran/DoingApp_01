@@ -1,27 +1,74 @@
 @extends('layouts.app')
 
 @section('content')
+<head>
+<style>
+.todo{
+  margin-top:40px;
+  }
+
+</style>
+</head>
+  
+  <div class="container-fluid">
+  <div class="row">
+  
+  <div class="col-lg-12">
+  
+  <table>
+  
+  <thead>
+  <th>Todos List</th>
+  <th>Status</th>
+  
+  </thead>
+  @foreach($todos as $todo)
+  <tr>
+  <td>{{$todo->todo}}</td>
+  <td>
+  @if(!$todo->completed)
+
+  <a href="{{route('todos.show',['id'=>$todo->id])}}" class="btn btn-success" >Mark As completed</a>
+  @else
+   
+   <span class="text-success">Completed!</span>
 
 
-     <div class="row">
-       <div class="col-lg-6">
-       
-       @foreach($todos as $todo)
-       <h4>{{$todo->todo}}
-       
-       <a class="btn btn-info btn-xs" href="{{route('todos.update',['id'=>$todo->id])}}" >Update </a>
-       <form action="{{route('todos.destroy',['id'=>$todo->id])}}" method="post">
-       {{csrf_field()}}
-       <input type="hidden" name="_method" value="DELETE">
-       <button type="submit" class="btn btn-danger">Delete</button>
+  @endif
+  </td>
+  <td><a type="button" class="btn btn-warning"  href="{{route('todos.edit',['id'=>$todo->id])}}">Edit</a></td>
+  <td><form action="{{route('todos.update',['id'=>$todo->id])}}" method="post">
+  {{csrf_field()}}
+  
+  {{method_field('PUT')}}
 
-       </form>
-         </h4>
-       
-       @endforeach
-       </div><!--end first columm-->
+  <input type="hidden" name="_method" value="DELETE">
+  <input type="submit" name="submit" class="btn btn-primary" value="Delete">
+  </form></td>
+  </tr>
+  @endforeach
+  
+  </table>
+  
+  
+  </div><!--end of col-->
+  
 
-       <div class="col-lg-6">
+  
+  
+  
+  </div><!--end of row -->
+  
+  
+  
+  
+  
+  </div><!--end of container fluid -->
+
+    <div class="container-fluid todo">
+    <div class="row">
+       <div class="col-lg-12 ">
+       <h3>Add new Todos</h3>
             <form action="{{route('todos.store')}}" method="post">
    
             <input type="text" class="form-control" name="todo" placeholder="ToDos">
@@ -35,8 +82,8 @@
 
        </form><!--end form here-->
 
-     </div><!--row end here-->
-
+     </div><!--second row end here-->
+     </div><!--end of container fluid-->
 
      
 
